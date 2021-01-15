@@ -7,6 +7,7 @@ document.getElementById('test-button').addEventListener('click', function(){
   */
 
  const titleClickHandler = function(event) {
+    event.preventDefault();
     const clickedElement = this;
     console.log('Link was clicked!');
     console.log(event)
@@ -32,10 +33,11 @@ document.getElementById('test-button').addEventListener('click', function(){
         activeArticle.classList.remove('active');
     }
   
-    /* get 'href' attribute from the clicked link */
+    /* [IN PROGRESS] get 'href' attribute from the clicked link */
 
+    const articleSelector = clickedElement.getAttribute('href');
+    console.log('href:', articleSelector)
 
-  
     /* find the correct article using the selector (value of 'href' attribute) */
 
 
