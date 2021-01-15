@@ -43,9 +43,9 @@ document.getElementById('test-button').addEventListener('click', function(){
     const targetArticle = document.querySelector(articleSelector);
     console.log('target:', targetArticle);
   
-    /* [IN PROGRESS] add class 'active' to the correct article */
+    /* [DONE] add class 'active' to the correct article */
 
-
+    targetArticle.classList.add('active');
 }
   
 const links = document.querySelectorAll('.titles a');
