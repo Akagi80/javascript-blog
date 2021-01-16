@@ -1,4 +1,3 @@
-{
     'use strict';
     /*
     document.getElementById('test-button').addEventListener('click', function(){
@@ -61,25 +60,33 @@
 
     function generateTitleLinks(){
 
-        /* remove contents of titleList */
+        /* [DONE] remove contents of titleList */
 
         const titleList = document.querySelector(optTitleListSelector);
         titleList.innerHTML = '';
 
-        /* for each article */
+        /* [DONE] for each article */
 
-        /* get the article id */
+        const articles = document.querySelectorAll(optArticleSelector);
 
-        /* find the title element */
+        for (let article of articles) {
 
-        /* get the title from the title element */
+            /* [DONE] get the article id */
 
-        /* create HTML of the link */
+            const articleId = article.getAttribute('id');
 
-        /* insert link into titleList */
+            /* [DONE] find the title element */
+            /* [DONE] get the title from the title element */
 
-    
+            const articleTitle = article.querySelector(optTitleSelector).innerHTML;
+
+            /* create HTML of the link */
+
+
+
+            /* insert link into titleList */
+
+        }
     }
 
     generateTitleLinks();
-}
