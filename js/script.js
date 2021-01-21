@@ -139,25 +139,14 @@ function generateTags() {
       /* [DONE] add generated code to html variable */
 
       html = html + linkHTML;
-      tagsWrapper.innerHTML = html;
       //console.log(html);
 
     /* END LOOP: for each tag */
     }
 
+    /* [DONE] insert HTML of all the links into the tags wrapper */
 
-    /* [IN PROGRESS] insert HTML of all the links into the tags wrapper */
-    /*
-    const links = document.querySelectorAll('.titles a');
-    for(let link of links) {
-      link.addEventListener('click', titleClickHandler);
-    }
-    */
-    //const links = document.querySelectorAll(tagsWrapper, a);
-    //console.log('links: ', links);
-    //for (let tag of links) {
-     // tag.addEventListener('click', titleClickHandler);
-    //}
+    tagsWrapper.innerHTML = html;
 
   /* END LOOP: for every article: */
   }
