@@ -141,15 +141,15 @@ function generateTags() {
       html = html + linkHTML;
       //console.log(html);
 
-    /* END LOOP: for each tag */
+    /* [DONE] END LOOP: for each tag */
     }
 
-    /* [DONE] insert HTML of all the links into the tags wrapper */
+    /* [DONE?] insert HTML of all the links into the tags wrapper */
 
     tagsWrapper.innerHTML = html;  // ????? czemu brak odstępów między tagami pod artykułem???????
 
 
-  /* END LOOP: for every article: */
+  /* [DONE] END LOOP: for every article: */
   }
 }
 
@@ -185,24 +185,23 @@ function tagClickHandler(event){
 
     activeTag.classList.remove('active');
 
-  /* [DONE] END LOOP: for each active tag link */
+    /* [DONE] END LOOP: for each active tag link */
 
   }
 
   /* [DONE] find all tag links with "href" attribute equal to the "href" constant */
 
-  const tagLinks = document.querySelectorAll('a[href="' + href + '"]');
-  console.log(allHrefTags);
+  const foundTagLinks = document.querySelectorAll('a[href="' + href + '"]');
 
   /* [DONE] START LOOP: for each found tag link */
 
-  for (let tagLink of tagLinks ) {
+  for (let foundTagLink of foundTagLinks ) {
 
     /* [DONE] add class active */
 
-    tagLink.classList.add('active');
+    foundTagLink.classList.add('active');
 
-  /* [DONE] END LOOP: for each found tag link */
+    /* [DONE] END LOOP: for each found tag link */
 
   }
 
@@ -212,15 +211,22 @@ function tagClickHandler(event){
 }
 
 function addClickListenersToTags(){
-  /* find all links to tags */
 
-    
+  /* [DONE] find all links to tags */
+
+  const tagLinks = document.querySelectorAll('a[href^="#tag-"]');
 
   /* START LOOP: for each link */
 
+  for (let tagLink of tagLinks) {
+
     /* add tagClickHandler as event listener for that link */
 
-  /* END LOOP: for each link */
+    tagLink.addEventListener('click', tagClickHandler);
+
+    /* END LOOP: for each link */
+
+  }
 }
 
 addClickListenersToTags();
