@@ -191,18 +191,24 @@ function tagClickHandler(event){
 
   /* [DONE] find all tag links with "href" attribute equal to the "href" constant */
 
-  const allHrefTags = document.querySelectorAll('a[href="' + href + '"]');
+  const tagLinks = document.querySelectorAll('a[href="' + href + '"]');
   console.log(allHrefTags);
 
   /* START LOOP: for each found tag link */
 
-
+  for (let tagLink of tagLinks ) {
 
     /* add class active */
 
+    tagLink.classList.add('active');
+
   /* END LOOP: for each found tag link */
 
+  }
+
   /* execute function "generateTitleLinks" with article selector as argument */
+
+  generateTitleLinks('[data-tags~="' + tag + '"]');
 }
 
 function addClickListenersToTags(){
