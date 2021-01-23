@@ -348,3 +348,4 @@ function addClickListenersToAuthors () {
 }
 
 addClickListenersToAuthors ();
+
