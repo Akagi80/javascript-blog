@@ -253,7 +253,7 @@ function generateAuthors() {
     /* get authors from data-authors attribute */
 
     const articleAuthors = article.getAttribute('data-author');
-    console.log(articleAuthors);
+    //console.log(articleAuthors);
 
     /* [DONE] generate HTML of the link */
 
@@ -271,4 +271,23 @@ function generateAuthors() {
 
 generateAuthors();
 
+function addClickListenersToAuthors () {
 
+  /* [DONE] find all links to authors */
+
+  const authorLinks = document.querySelectorAll('a[href^="#author-"]');
+
+  /* [DONE] START LOOP: for each link */
+
+  for (let authorLink of authorLinks) {
+
+    /* [DONE] add authorClickHandler as event listener for that link */
+
+    authorLink.addEventListener('click', authorClickHandler);
+
+    /* [DONE] END LOOP: for each link */
+
+  }
+}
+
+addClickListenersToAuthors ();
