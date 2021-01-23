@@ -231,3 +231,44 @@ function addClickListenersToTags(){
 }
 
 addClickListenersToTags();
+
+function generateAuthors() {
+
+  /* [DONE] find all articles */
+
+  const articles = document.querySelectorAll(optArticleSelector);
+
+  /* [DONE] START LOOP: for every author: */
+
+  for (let article of articles) {
+
+    /* find author wrapper */
+
+    const authorWrapper = article.querySelector(optArticleAuthorSelector);
+
+    /*  make html variable with empty string */
+
+    let html = '';
+
+    /* get authors from data-authors attribute */
+
+    const articleAuthors = article.getAttribute('data-author');
+    console.log(articleAuthors);
+
+    /* [DONE] generate HTML of the link */
+
+    const linkHTML = '<li><a href="#author-' + articleAuthors + '"><span>' + articleAuthors + '</span></a></li>';
+
+    /* [DONE] add generated code to html variable */
+
+    html = html + linkHTML;
+
+    /* insert HTML of all the links into the tag wrapper */
+
+    authorWrapper.innerHTML = html;
+  }
+}
+
+generateAuthors();
+
+
