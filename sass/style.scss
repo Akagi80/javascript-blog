@@ -71,6 +71,36 @@ body {
   border-radius: 5px;
 }
 
+.sidebar,
+.tags {
+  display: inline;
+}
+
+.tag-size-1 {
+  color: rgb(241, 147, 83);
+  font-size: 17px;
+}
+
+.tag-size-2 {
+  color: rgb(223, 108, 67);
+  font-size: 18px;
+}
+
+.tag-size-3 {
+  color: rgb(160, 70, 38);
+  font-size: 19px;
+}
+
+.tag-size-4 {
+  color: rgb(128, 50, 21);
+  font-size: 20px;
+}
+
+.tag-size-5 {
+  color: rgb(85, 31, 11);
+  font-size: 21px;
+}
+
 /* Logo */
 
 .logo {
@@ -128,3 +158,4 @@ body {
     margin: 0 10px 0 0;
   }
 }
+
