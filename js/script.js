@@ -114,7 +114,9 @@ function calculateTagsParams(tags) {
   return params;
 }
 
+//function calculateTagClass(count, params) {
 
+//}
 
 function generateTags() {
   /* [NEW] create a new variable allTags with an empty object */
@@ -191,7 +193,12 @@ function generateTags() {
   for(let tag in allTags) {
 
     /* [NEW] generate code of a link and add it to allTagsHTML */
-    allTagsHTML += '<li><a href="#tag-' + tag + '"><span>' + tag + ' (' + allTags[tag] + ') ' + '</span></a></li>';
+    //allTagsHTML += '<li><a href="#tag-' + tag + '"><span>' + tag + ' (' + allTags[tag] + ') ' + '</span></a></li>';
+    const tagLinkHTML = '<li><a href="#tag-' + tag + '" class="" + calculateTagClass(allTags[tag], tagsParam) + ><span>' + tag + ' (' + allTags[tag] + ') ' + '</span></a></li>';
+
+    console.log('tagLinkHTML:', tagLinkHTML);
+
+    allTagsHTML += tagLinkHTML;
 
   /* [NEW] END LOOP: for each tag in allTags: */
   }
@@ -203,7 +210,7 @@ function generateTags() {
 
 generateTags();
 
-function tagClickHandler(event){
+function tagClickHandler(event) {
 
   /* [DONE] prevent default action for this event */
 
