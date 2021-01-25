@@ -303,8 +303,8 @@ function calcutateAuthorsParams(authors) {
 }
 */
 function generateAuthors () {
-  /* [NEW] create a new variable allTags with an empty array */
-  let allAuhtors = [];
+  /* [NEW] create a new variable allTags with an empty object */
+  let allAuthors = {};
 
   /* [DONE] find all articles */
   const articles = document.querySelectorAll(optArticleSelector);
@@ -320,34 +320,54 @@ function generateAuthors () {
 
     /* [DONE] get authors from data-authors attribute */
     // 1. Dla każdego artykułu znajdujemy jego autorów-----------------
-    const articleAuthors = article.getAttribute('data-author');
-    //console.log(articleAuthors);
+    const author = article.getAttribute('data-author');
+    //console.log('author: ', author);
 
-    /* [DONE] [DONE] generate HTML of the link */
+    /* [DONE] generate HTML of the link */
     // 2. Dla każdego z tych artykułów jest generowany kod HTML linka---------------
-    const linkHTML = '<li><a href="#author-' + articleAuthors + '"><span>' + articleAuthors + '</span></a></li>';
+    const linkHTML = '<li><a href="#author-' + author + '"><span>' + author + '</span></a></li>';
 
     /* [DONE] add generated code to html variable */
     html = html + linkHTML;
 
     /* [NEW] check if this link is NOT already in allAuthors */
-    // 3. Sprawdzamy, czy dokładnie taki link mamy już w tablicy allAuthors-----------------
-    if(allAuhtors.indexOf(linkHTML) == -1){
+    // 3. Sprawdzamy, czy dokładnie taki link mamy już w obiekcie allAuthors-----------------
+    if(!allAuthors[author]) {
 
-      /* [NEW] add generated code to allAuthors array */
-      // 4. Jeśli go nie mamy, dodajemy go do tej tablicy--------------------
-      allAuhtors.push(linkHTML);
+      /* [NEW] add generated code to allAuthors object */
+      // 4. Jeśli go nie mamy, dodajemy go do obiektu--------------------
+      allAuthors[author] = 1;
+    } else {
+      allAuthors[author]++;
     }
 
     /* [DONE] insert HTML of all the links into the author wrapper */
     authorWrapper.innerHTML = html;
   }
+
+
   /* [NEW] find list of authors in right column */
   // 5. Znajdujemy listę autorów----------------------
   const authorList = document.querySelector('.authors');
+  //console.log(authorList);
 
   /* [NEW] add html from allAuthors to tagList */
-  authorList.innerHTML = allAuhtors.join(' ');
+  // authorList.innerHTML = allAuhtors.join(' ');
+  //console.log(allAuthors);
+
+  /* [NEW] create variable for all links HTML code */
+  let allAuthorsHTML = '';
+
+  /* [NEW] START LOOP: for each author in allAuthors: */
+  for(let author in allAuthors) {
+  /* [NEW] generate code of a link and add it to allAuthors */
+    allAuthors += author + ' (' + allAuthors[author] + ') ';
+
+  /* [NEW] END LOOP: for each tag in allAuthors: */
+  }
+  /*[NEW] add HTML from allAuthorsHTML to tagList */
+  authorList.innerHTML = allAuthorsHTML;
+  console.log(authorList);
 }
 generateAuthors();
 
