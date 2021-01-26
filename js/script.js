@@ -5,6 +5,11 @@ const links = document.querySelectorAll('.titles a');
 console.log('links:', links);
 });
 */
+const templates = {
+  articleLink: Handlebars.compile(document.querySelector('#template-article-link').innerHTML),
+  tagLink: Handlebars.compile(document.querySelector('#template-tag-link').innerHTML),
+  authorLink: Handlebars.compile(document.querySelector('#template-author-link').innerHTML),
+}
 
 const titleClickHandler = function(event) {
   event.preventDefault();
@@ -86,7 +91,9 @@ function generateTitleLinks(customSelector = '') {
 
     /* [DONE] create HTML of the link */
 
-    const linkHTML = '<li><a href="#' + articleId + '"><span>' + articleTitle + '</span></a></li>';
+    //const linkHTML = '<li><a href="#' + articleId + '"><span>' + articleTitle + '</span></a></li>';
+    const linkHTMLData = {id: articleId, title: articleTitle};
+    const linkHTML = templates.articleLink(linkHTMLData);
     //console.log('linkHTML: ', linkHTML);
 
     /* [DONE] insert link into titleList */
@@ -162,7 +169,9 @@ function generateTags() {
 
       /* [DONE] generate HTML of the link */
 
-      const linkHTML = '<li><a href="#tag-' + tag + '"><span>' + tag + '</span></a></li>' + ' ';
+      //const linkHTML = '<li><a href="#tag-' + tag + '"><span>' + tag + '</span></a></li>' + ' ';
+      const linkHTMLData = {id: tag, title: tag};
+      const linkHTML = templates.tagLink(linkHTMLData);
       //console.log(linkHTML);
 
       /* [DONE] add generated code to html variable */
@@ -326,8 +335,9 @@ function generateAuthors () {
 
     /* [DONE] generate HTML of the link */
     // 2. Dla każdego z tych artykułów jest generowany kod HTML linka---------------
-    const linkHTML = '<li><a href="#author-' + author + '"><span>' + author + '</span></a></li>';
-
+    //const linkHTML = '<li><a href="#author-' + author + '"><span>' + author + '</span></a></li>';
+    const linkHTMLData = {id: author, title: author};
+    const linkHTML = templates.authorLink(linkHTMLData);
     /* [DONE] add generated code to html variable */
     html = html + linkHTML;
 
