@@ -160,7 +160,7 @@ function generateTags() {
 
       /* [DONE] generate HTML of the link */
 
-      const linkHTML = '<li><a href="#tag-' + tag + '"><span>' + tag + '</span></a></li>';
+      const linkHTML = '<li><a href="#tag-' + tag + '"><span>' + tag + '</span></a></li>' + ' ';
       //console.log(linkHTML);
 
       /* [DONE] add generated code to html variable */
@@ -179,9 +179,9 @@ function generateTags() {
     /* [DONE] END LOOP: for each tag */
     }
 
-    /* [DONE?] insert HTML of all the links into the tags wrapper */
+    /* [DONE] insert HTML of all the links into the tags wrapper */
 
-    tagsWrapper.innerHTML = html;  // ????? czemu brak odstępów między tagami pod artykułem???????
+    tagsWrapper.innerHTML = html;  //
 
   /* [DONE] END LOOP: for every article: */
   }
@@ -205,13 +205,12 @@ function generateTags() {
     //console.log('tagLinkHTML:', tagLinkHTML);
 
     allTagsHTML += tagLinkHTML;
-
   /* [NEW] END LOOP: for each tag in allTags: */
   }
 
   /*[NEW] add HTML from allTagsHTML to tagList */
   tagList.innerHTML = allTagsHTML;
-  //console.log(allTags);
+  //console.log('allTags: ',allTags);
 }
 
 generateTags();
@@ -291,17 +290,17 @@ function addClickListenersToTags(){
 }
 
 addClickListenersToTags();
-/*
+
 function calcutateAuthorsParams(authors) {
   const params = {max: 1, min: 999999};
   for (let author in authors) {
-    console.log(author + ' is used ' + authors[author] + ' times');
+    //console.log(author + ' is used ' + authors[author] + ' times');
     params.max = Math.max(authors[author], params.max);
     params.min = Math.min(authors[author], params.min);
   }
   return params;
 }
-*/
+
 function generateAuthors () {
   /* [NEW] create a new variable allTags with an empty object */
   let allAuthors = {};
@@ -333,7 +332,6 @@ function generateAuthors () {
     /* [NEW] check if this link is NOT already in allAuthors */
     // 3. Sprawdzamy, czy dokładnie taki link mamy już w obiekcie allAuthors-----------------
     if(!allAuthors[author]) {
-
       /* [NEW] add generated code to allAuthors object */
       // 4. Jeśli go nie mamy, dodajemy go do obiektu--------------------
       allAuthors[author] = 1;
@@ -350,10 +348,11 @@ function generateAuthors () {
   // 5. Znajdujemy listę autorów----------------------
   const authorList = document.querySelector('.authors');
   //console.log(authorList);
+  const authorsParams = calcutateAuthorsParams(allAuthors);
 
   /* [NEW] add html from allAuthors to tagList */
-  // authorList.innerHTML = allAuhtors.join(' ');
-  //console.log(allAuthors);
+  //authorList.innerHTML = allAuthors.join(' ');
+
 
   /* [NEW] create variable for all links HTML code */
   let allAuthorsHTML = '';
@@ -361,13 +360,16 @@ function generateAuthors () {
   /* [NEW] START LOOP: for each author in allAuthors: */
   for(let author in allAuthors) {
   /* [NEW] generate code of a link and add it to allAuthors */
-    allAuthors += author + ' (' + allAuthors[author] + ') ';
+    //allAuthors += author + ' (' + allAuthors[author] + ') ';
+    const authorLinkHTML = '<li><a href="#author-' + author + '"' + 'class="' + calculateTagClass(allAuthors[author], authorsParams) + '"' + '>' + author + ' ' + '</a></li>';
+
+    allAuthorsHTML += authorLinkHTML;
 
   /* [NEW] END LOOP: for each tag in allAuthors: */
   }
   /*[NEW] add HTML from allAuthorsHTML to tagList */
   authorList.innerHTML = allAuthorsHTML;
-  console.log(authorList);
+  //console.log('allAuthors: ',allAuthors);
 }
 generateAuthors();
 
